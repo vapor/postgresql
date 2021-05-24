@@ -19,7 +19,7 @@ public struct PostgresConnectionSource: ConnectionPoolSource {
             to: address,
             tlsConfiguration: self.configuration.tlsConfiguration,
             serverHostname: self.configuration._hostname,
-            logger: .init(label: "codes.vapor.postgres"),
+            logger: logger,
             on: eventLoop
         ).flatMap { conn in
             return conn.authenticate(
